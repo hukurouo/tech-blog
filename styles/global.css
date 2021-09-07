@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 @import 'prism.css';
-@import 'b-card.css';
 
 @layer utilities {
   .font-palt {
