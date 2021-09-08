@@ -27,6 +27,7 @@
  
  pre > code[class*="language-"] {
 	 font-size: 1em;
+	 overflow: auto;
  }
  
  pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
@@ -62,7 +63,7 @@
  .token.doctype,
  .token.cdata {
 	 color: #999988;
-	 font-style: italic;
+
  }
  
  .token.namespace {
