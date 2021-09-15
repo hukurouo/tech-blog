@@ -1,5 +1,5 @@
 ---
-title: railsのフォームに初期値を入れる
+title: Railsのフォームに初期値を入れる
 date: 2021-09-03
 categories: 技術
 tags: [knowledge]
