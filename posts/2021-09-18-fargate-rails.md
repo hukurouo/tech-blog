@@ -81,7 +81,7 @@ https://qiita.com/hatsu/items/22e11e94a0a981d78efa
 
 alpine用にカスタマイズが必要なところを修正していく。
 
-Dockerfile
+docker/production/Dockerfile
 
 ~~~md
 FROM ruby:3.0.2-alpine
@@ -128,7 +128,7 @@ alpineイメージは`service`が使えないので、代わりに`openrc`を使
 
 https://wiki.alpinelinux.org/wiki/Alpine_Linux_Init_System
 
-entrypoint.sh
+docker/production/entrypoint.sh
 ~~~bash
 #!/bin/bash
 
