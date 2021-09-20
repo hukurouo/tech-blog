@@ -1,6 +1,6 @@
 ---
 title: 競馬予想するやつを作った
-date: 2021-09-18
+date: 2021-09-19
 categories: 技術
 tags: [tukutta]
 ---
