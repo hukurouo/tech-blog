@@ -90,8 +90,7 @@ ENV BUNDLE_WITHOUT development:test
 
 WORKDIR /app
 ENV RAILS_ENV production
-COPY Gemfile Gemfile.lock .
-COPY package.json yarn.lock .
+COPY Gemfile Gemfile.lock package.json yarn.lock /app/
 
 RUN apk add --no-cache -t .build-dependencies \
     alpine-sdk \
@@ -102,6 +101,7 @@ RUN apk add --no-cache -t .build-dependencies \
     nodejs \
     tzdata \
     yarn \
+    npm \
     nginx \
     openrc \
  && gem install bundler:2.0.2 \
@@ -111,13 +111,17 @@ RUN apk add --no-cache -t .build-dependencies \
 
 COPY . /app
 
+RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile \
+ && yarn cache clean \
+ && rm -rf node_modules tmp/cache
+
 # nginx
 ADD docker/production/nginx.conf /etc/nginx/nginx.conf
 ADD docker/production/entrypoint.sh /app/entrypoint.sh
 
-# openrc preparation 
+# openrc preparation
 # ref: https://stackoverflow.com/questions/65627946
-RUN openrc && touch /run/openrc/softlevel 
+RUN openrc && touch /run/openrc/softlevel
 
 EXPOSE 80
 
@@ -139,7 +143,6 @@ rc-service nginx start
 
 cd /app
 RAILS_ENV=production bin/rails db:migrate
-RAILS_ENV=production bin/rails assets:precompile
 bundle exec pumactl start
 ~~~
 

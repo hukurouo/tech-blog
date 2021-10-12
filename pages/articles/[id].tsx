@@ -32,7 +32,16 @@ export default function Post({ postData }) {
       </Head>
       <article className={`${styles.article} mt-16 mb-8 lg:text-lg`}>
         <div className="text-2xl font-bold leading-snug	">{postData.title}</div>
-        <div className="text-gray-500 mt-2 mb-8">{postData.date}</div>
+        <div className="text-gray-800 mt-2 mb-3">{postData.date}</div>
+        {postData.tags.map((tag: string) => {
+                    return (
+                      <Link href={`/tag/${tag}`} key={tag}>
+                        <a>
+                          <span className="text-gray-800 underline"> # {tag}</span>
+                        </a>
+                      </Link>
+                    );
+                  })}
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
       {postData.tags.includes("良かった作品") && (

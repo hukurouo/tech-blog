@@ -50,6 +50,7 @@ COPY Gemfile Gemfile.lock /myapp/
 RUN apk add --no-cache -t .build-dependencies \
     alpine-sdk \
     build-base \
+    mysql-client \
  && apk add --no-cache \ 
     bash \
     mysql-dev \
@@ -118,9 +119,26 @@ webpackerは自分で整備する必要があるらしい。
 $ docker-compose run --rm web rails webpacker:install
 ~~~
 
-これで上手くいった。後はいつものDB設定して、完了。
+これで上手くいった。
 
-https://docs.docker.com/samples/rails/#connect-the-database
+# DB設定
+
+config/database.yml
+~~~yml
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
+  username: root
+  password: password
+~~~
+
+~~~
+$ docker-compose run --rm web rails db:create
+~~~
+
+# 結果
 
 https://i.imgur.com/6dBiuTP.png
 フルイメージ時と比べて1/3くらいのサイズになった
