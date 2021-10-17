@@ -6,8 +6,8 @@ tags: []
 ---
 システムエンジニアに就いて一年が経った。2020年下期を振り返る。
 
-https://hukurouo.com/articles/2020-10-20-se-hurikaeri1
-SE備忘録 2020年上期
+[SE備忘録 2020年上期](https://tech.hukurouo.com/articles/2020-10-20-se-hurikaeri1)
+
 
 ## 会社でやったこと
 
