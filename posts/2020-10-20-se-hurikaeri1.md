@@ -2,7 +2,7 @@
 title: SE備忘録 2020年上期
 date: 2020-10-20
 categories: 技術
-tags: []
+tags: [diary]
 ---
 システムエンジニアに就いて半年が経ちました。
 
